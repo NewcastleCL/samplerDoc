@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Particle Based Samplers for MCMC</title>
   <meta name="description" content="Particle Based Sampler for MCMC" />
-  <meta name="generator" content="bookdown 0.23 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.42 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Particle Based Samplers for MCMC" />
   <meta property="og:type" content="book" />
-  
   
   <meta property="og:description" content="Particle Based Sampler for MCMC" />
   <meta name="github-repo" content="rstudio/bookdown-demo" />
@@ -30,8 +29,9 @@
   
   
 
-<link rel="next" href="pmwg-sampler-and-signal-detection-theory.html"/>
+
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
@@ -47,74 +47,16 @@
 
 
 
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
 
 
 <style type="text/css">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
-}
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(title);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {  }
-@media screen {
-a.sourceLine::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -132,92 +74,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">PMwG Samplers Package</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction to particle based sampler for MCMC</a><ul>
-<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#assumed-knowledge"><i class="fa fa-check"></i><b>1.1</b> Assumed knowledge</a></li>
-<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#why-would-you-use-particle-metropolis-within-gibbs-sampling"><i class="fa fa-check"></i><b>1.2</b> Why would you use Particle Metropolis within Gibbs sampling?</a></li>
-<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#the-assumed-hierarchical-structure"><i class="fa fa-check"></i><b>1.3</b> The assumed hierarchical structure</a></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#what-particle-metropolis-within-gibbs-sampling-provides"><i class="fa fa-check"></i><b>1.4</b> What Particle Metropolis within Gibbs sampling provides</a></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#what-is-particle-metropolis-within-gibbs-sampling"><i class="fa fa-check"></i><b>1.5</b> What is Particle Metropolis within Gibbs sampling?</a></li>
-<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#generating-proposals-in-pmwg-sampling-using-particle-metropolis"><i class="fa fa-check"></i><b>1.6</b> Generating proposals in PMwG sampling using Particle Metropolis</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="#notice"><i class="fa fa-check"></i><b>1</b> NOTICE</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="#particle-metropolis-within-gibbs-book"><i class="fa fa-check"></i><b>1.1</b> Particle Metropolis within Gibbs Book</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html"><i class="fa fa-check"></i><b>2</b> PMwG sampler and Signal Detection Theory</a><ul>
-<li class="chapter" data-level="2.0.1" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#sdtOutline"><i class="fa fa-check"></i><b>2.0.1</b> Signal Detection Theory analysis of lexical decision task</a></li>
-<li class="chapter" data-level="2.0.2" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#SDTLLFun"><i class="fa fa-check"></i><b>2.0.2</b> The log-likelihood function</a></li>
-<li class="chapter" data-level="2.1" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#testing-the-sdt-log-likelihood-function"><i class="fa fa-check"></i><b>2.1</b> Testing the SDT log-likelihood function</a></li>
-<li class="chapter" data-level="2.2" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#sdtWag"><i class="fa fa-check"></i><b>2.2</b> SDT log-likelihood function for Wagenmakers experiment</a><ul>
-<li class="chapter" data-level="2.2.1" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#description-of-wagenmakers-experiment"><i class="fa fa-check"></i><b>2.2.1</b> Description of Wagenmakers experiment</a></li>
-<li class="chapter" data-level="2.2.2" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#computation-time-of-the-log-likelihood-function"><i class="fa fa-check"></i><b>2.2.2</b> Computation time of the log-likelihood function</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#sdtPMwG"><i class="fa fa-check"></i><b>2.3</b> PMwG Framework</a><ul>
-<li class="chapter" data-level="2.3.1" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#start-points"><i class="fa fa-check"></i><b>2.3.1</b> Model start points</a></li>
-<li class="chapter" data-level="2.3.2" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#run-sdtsampler"><i class="fa fa-check"></i><b>2.3.2</b> Running the sampler</a></li>
-</ul></li>
-<li class="chapter" data-level="2.4" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#check-the-sampling-process"><i class="fa fa-check"></i><b>2.4</b> Check the sampling process</a></li>
-<li class="chapter" data-level="2.5" data-path="pmwg-sampler-and-signal-detection-theory.html"><a href="pmwg-sampler-and-signal-detection-theory.html#simulating-posterior-data"><i class="fa fa-check"></i><b>2.5</b> Simulating posterior data</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="forstmannChapter.html"><a href="forstmannChapter.html"><i class="fa fa-check"></i><b>3</b> PMwG sampler and sequential sampling models</a><ul>
-<li class="chapter" data-level="3.1" data-path="forstmannChapter.html"><a href="forstmannChapter.html#the-speed-accuracy-tradeoff-in-perceptual-decisions"><i class="fa fa-check"></i><b>3.1</b> The speed-accuracy tradeoff in perceptual decisions</a></li>
-<li class="chapter" data-level="3.2" data-path="forstmannChapter.html"><a href="forstmannChapter.html#LBAParameters"><i class="fa fa-check"></i><b>3.2</b> Linear Ballistic Accumulator Parameters</a></li>
-<li class="chapter" data-level="3.3" data-path="forstmannChapter.html"><a href="forstmannChapter.html#theLLFunc"><i class="fa fa-check"></i><b>3.3</b> The log-likelihood function</a><ul>
-<li class="chapter" data-level="3.3.1" data-path="forstmannChapter.html"><a href="forstmannChapter.html#what-is-a-log-likelihood-function"><i class="fa fa-check"></i><b>3.3.1</b> What is a log-likelihood function?</a></li>
-<li class="chapter" data-level="3.3.2" data-path="forstmannChapter.html"><a href="forstmannChapter.html#writing-the-log-likelihood-function-for-the-forstmann-data-set"><i class="fa fa-check"></i><b>3.3.2</b> Writing the log-likelihood function for the Forstmann data set</a></li>
-<li class="chapter" data-level="3.3.3" data-path="forstmannChapter.html"><a href="forstmannChapter.html#fstLBALL"><i class="fa fa-check"></i><b>3.3.3</b> Fast LBA Log-likelihood Function</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="forstmannChapter.html"><a href="forstmannChapter.html#pmwg-framework"><i class="fa fa-check"></i><b>3.4</b> PMwG Framework</a><ul>
-<li class="chapter" data-level="3.4.1" data-path="forstmannChapter.html"><a href="forstmannChapter.html#lbaStartPts"><i class="fa fa-check"></i><b>3.4.1</b> Model start points</a></li>
-<li class="chapter" data-level="3.4.2" data-path="forstmannChapter.html"><a href="forstmannChapter.html#run-sampler"><i class="fa fa-check"></i><b>3.4.2</b> Running the sampler</a></li>
-<li class="chapter" data-level="3.4.3" data-path="forstmannChapter.html"><a href="forstmannChapter.html#estSet"><i class="fa fa-check"></i><b>3.4.3</b> Determining estimation settings for the PMwG sampler</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="forstmannChapter.html"><a href="forstmannChapter.html#genppdatafunc"><i class="fa fa-check"></i><b>3.5</b> Simulating Posterior Predictive Data</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="forstmannChapter.html"><a href="forstmannChapter.html#assessing-descriptive-adequacy-goodness-of-fit"><i class="fa fa-check"></i><b>3.5.1</b> Assessing Descriptive Adequacy (goodness of fit)</a></li>
-<li class="chapter" data-level="3.5.2" data-path="forstmannChapter.html"><a href="forstmannChapter.html#pmwg-framework-for-a-single-threshold-model"><i class="fa fa-check"></i><b>3.5.2</b> PMwG framework for a single threshold model</a></li>
-</ul></li>
-<li class="chapter" data-level="3.6" data-path="forstmannChapter.html"><a href="forstmannChapter.html#checking-descriptive-adequacy-of-1b-model."><i class="fa fa-check"></i><b>3.6</b> Checking Descriptive Adequacy of 1b model.</a></li>
-<li class="chapter" data-level="3.7" data-path="forstmannChapter.html"><a href="forstmannChapter.html#forstMC"><i class="fa fa-check"></i><b>3.7</b> Model Comparison</a><ul>
-<li class="chapter" data-level="3.7.1" data-path="forstmannChapter.html"><a href="forstmannChapter.html#assessing-descriptive-adequacy-graphically"><i class="fa fa-check"></i><b>3.7.1</b> Assessing Descriptive Adequacy Graphically</a></li>
-<li class="chapter" data-level="3.7.2" data-path="forstmannChapter.html"><a href="forstmannChapter.html#forstDIC"><i class="fa fa-check"></i><b>3.7.2</b> Model comparison via DIC</a></li>
-</ul></li>
-<li class="chapter" data-level="3.8" data-path="forstmannChapter.html"><a href="forstmannChapter.html#LBAllcheck"><i class="fa fa-check"></i><b>3.8</b> Checking the LBA log-likelihood function</a><ul>
-<li class="chapter" data-level="3.8.1" data-path="forstmannChapter.html"><a href="forstmannChapter.html#test-one-do-changes-in-parameter-values-cause-changes-in-the-returned-log-likelihood"><i class="fa fa-check"></i><b>3.8.1</b> Test one: Do changes in parameter values cause changes in the returned log-likelihood?</a></li>
-<li class="chapter" data-level="3.8.2" data-path="forstmannChapter.html"><a href="forstmannChapter.html#testing-whether-data-generating-parameter-values-have-the-highest-likelihood"><i class="fa fa-check"></i><b>3.8.2</b> Testing whether data generating parameter values have the highest likelihood</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><a href="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><i class="fa fa-check"></i><b>4</b> PMwG sampler with the Linear Ballistic Accumulator and a complex experiment design</a><ul>
-<li class="chapter" data-level="4.1" data-path="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><a href="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html#the-lba-log-likelihood-function-for-the-wagenmakers-data-set"><i class="fa fa-check"></i><b>4.1</b> The LBA log-likelihood function for the Wagenmakers data set</a><ul>
-<li class="chapter" data-level="4.1.1" data-path="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><a href="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html#what-is-a-log-likelihood-function-1"><i class="fa fa-check"></i><b>4.1.1</b> What is a log-likelihood function?</a></li>
-<li class="chapter" data-level="4.1.2" data-path="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><a href="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html#writing-the-lba-log-likelihood-for-the-wagenmakers-data-set"><i class="fa fa-check"></i><b>4.1.2</b> Writing the LBA log-likelihood for the Wagenmakers data set</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><a href="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html#wagFastll"><i class="fa fa-check"></i><b>4.2</b> Fast LBA Log-likelihood function</a></li>
-<li class="chapter" data-level="4.3" data-path="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><a href="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html#pmwg-framework-1"><i class="fa fa-check"></i><b>4.3</b> PMwG Framework</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="forstmannChapter.html"><a href="forstmannChapter.html#run-sampler"><i class="fa fa-check"></i><b>4.3.1</b> Running the sampler</a></li>
-</ul></li>
-<li class="chapter" data-level="4.4" data-path="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><a href="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html#genppdataWag"><i class="fa fa-check"></i><b>4.4</b> Simulating Posterior Predictive Data</a><ul>
-<li class="chapter" data-level="4.4.1" data-path="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><a href="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html#assessing-descriptive-adequacy-goodness-of-fit-1"><i class="fa fa-check"></i><b>4.4.1</b> Assessing Descriptive Adequacy (goodness of fit)</a></li>
-</ul></li>
-<li class="chapter" data-level="4.5" data-path="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html"><a href="pmwg-sampler-with-the-linear-ballistic-accumulator-and-a-complex-experiment-design.html#model-comparison-via-dic"><i class="fa fa-check"></i><b>4.5</b> Model Comparison via DIC</a></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><i class="fa fa-check"></i><b>5</b> Estimating the Marginal Likelihood via Importance Sampling (IS<sup>2</sup>)</a><ul>
-<li class="chapter" data-level="5.1" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#using-is2-with-the-forstmann-dataset"><i class="fa fa-check"></i><b>5.1</b> Using IS2 with the Forstmann dataset</a><ul>
-<li class="chapter" data-level="5.1.1" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#load-packages-and-samples"><i class="fa fa-check"></i><b>5.1.1</b> Load packages and samples</a></li>
-<li class="chapter" data-level="5.1.2" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#set-up-variables"><i class="fa fa-check"></i><b>5.1.2</b> Set up variables</a></li>
-<li class="chapter" data-level="5.1.3" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#store-the-samples"><i class="fa fa-check"></i><b>5.1.3</b> Store the samples</a></li>
-<li class="chapter" data-level="5.1.4" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#estimate-the-normal-mix"><i class="fa fa-check"></i><b>5.1.4</b> Estimate the normal mix</a></li>
-<li class="chapter" data-level="5.1.5" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#generate-proposal-parameters-from-importance-samples"><i class="fa fa-check"></i><b>5.1.5</b> Generate proposal parameters from importance samples</a></li>
-<li class="chapter" data-level="5.1.6" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#write-a-group-distribution-function"><i class="fa fa-check"></i><b>5.1.6</b> Write a group distribution function</a></li>
-<li class="chapter" data-level="5.1.7" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#write-a-prior-distribution-function"><i class="fa fa-check"></i><b>5.1.7</b> Write a prior distribution function</a></li>
-<li class="chapter" data-level="5.1.8" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#write-a-get_logp-function"><i class="fa fa-check"></i><b>5.1.8</b> Write a get_logp function</a></li>
-<li class="chapter" data-level="5.1.9" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#compute-the-lw"><i class="fa fa-check"></i><b>5.1.9</b> Compute the LW</a></li>
-<li class="chapter" data-level="5.1.10" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#make-it-work"><i class="fa fa-check"></i><b>5.1.10</b> Make it work</a></li>
-<li class="chapter" data-level="5.1.11" data-path="estimating-the-marginal-likelihood-via-importance-sampling-is2.html"><a href="estimating-the-marginal-likelihood-via-importance-sampling-is2.html#bootstrapping-for-se"><i class="fa fa-check"></i><b>5.1.11</b> Bootstrapping for SE</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="troubleshoot.html"><a href="troubleshoot.html"><i class="fa fa-check"></i><b>6</b> Troubleshooting PMwG errors</a><ul>
-<li class="chapter" data-level="6.1" data-path="troubleshoot.html"><a href="troubleshoot.html#writing-your-log-likelihood-function-tips-errors-and-check-list"><i class="fa fa-check"></i><b>6.1</b> Writing your log-likelihood function: Tips, errors and check list</a></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>7</b> Appendix</a><ul>
-<li class="chapter" data-level="7.1" data-path="appendix.html"><a href="appendix.html#wagSDTscript"><i class="fa fa-check"></i><b>7.1</b> Wagenmakers SDT script</a></li>
-</ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://newcastlecl.org/" target="blank">Published by Newcastle Cognition Lab</a></li>
 
@@ -241,67 +101,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">Particle Based Samplers for MCMC</h1>
 </div>
-<div id="introduction-to-particle-based-sampler-for-mcmc" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction to particle based sampler for MCMC</h1>
-<p>Contains implementations of particle based sampling methods for model parameter estimation. Primarily an implementation of the Particle Metropolis within Gibbs sampler outlined in the paper available <a href="https://www.sciencedirect.com/science/article/abs/pii/S0022249620300389">here</a>, it also contains code for covariance estimation.</p>
-<div id="assumed-knowledge" class="section level2">
-<h2><span class="header-section-number">1.1</span> Assumed knowledge</h2>
-<p>To get the most out of this tutorial for the PMwG sampler, we assume you are familiar with hierarchical Bayesian estimation and MCMC sampling. If you would like to read more on these topics, please see <span class="citation">Shiffrin et al. (<a href="#ref-shiffrin2008survey">2008</a>)</span> <a href="https://onlinelibrary.wiley.com/doi/full/10.1080/03640210802414826">tutorial on Hierachical Bayesian Methods</a> and <span class="citation">Van Ravenzwaaij, Cassey, and Brown (<a href="#ref-van2018simple">2018</a>)</span> <a href="https://link.springer.com/article/10.3758/s13423-016-1015-8?wt_mc=Other.Other.8.CON1172.PSBR%20VSI%20Art09">introduction to Markov Chain Monte-Carlo Sampling</a>.</p>
-</div>
-<div id="why-would-you-use-particle-metropolis-within-gibbs-sampling" class="section level2">
-<h2><span class="header-section-number">1.2</span> Why would you use Particle Metropolis within Gibbs sampling?</h2>
-<p>This software is intended to help estimate models in a hierarchical structure with random effects for subjects. You will need to be able to write a function that evaluates the density of one subject’s data, given values for that subject’s parameters (i.e. their random effects). Everything else is taken care of by the sampler functions. The model that defines the density for an individual subject’s data could be a regression model, a simple cognitive model like signal detection models (which is one of the examples we cover here), or models that can be very challenging to estimate, such as the <a href="https://www.sciencedirect.com/science/article/pii/S0010028507000722?casa_token=j4Qvgv8wgLgAAAAA:vKgwXvv52zw5_3ebsA_3W_sDa0meW5744jVPrPgND95W-nAIXa2ISIkjD_dyCj0LoQBEvH-3">Linear Ballistic Accumulator (LBA)</a> or the Drift Diffusion model. As long as you have a model for which you can provide a likelihood, the PMwG software will help estimate the model in a hierarchical Bayesian way.</p>
-<p>Benefits of the Particle Metropolis within Gibbs sampling algorithm include:</p>
-<ul>
-<li><p>It allows you to efficiently get posterior samples from difficult-to-estimate models with highly correlated parameters, such as the LBA or diffusion model, and these samples have nice properties (e.g., lower autocorrelation than other MCMC samplers).</p></li>
-<li><p>Statistical efficiency makes it feasilbe to draw a large number of posterior samples. This can be important in posterior inference, for example in calculating Bayes Factors using established methods.</p></li>
-<li><p>It allows you to estimate the covariance structure between parameters in a principled manner.</p></li>
-</ul>
-</div>
-<div id="the-assumed-hierarchical-structure" class="section level2">
-<h2><span class="header-section-number">1.3</span> The assumed hierarchical structure</h2>
-<p>The PMwG package is very flexible in that it is agnostic about the data-level model; it allows the user to specify the model that defines the density of each subject’s data. However, the package makes fixed assumptions about the hierarchical structure across participants. The package assumes a multivariate normal random effect structure. For example, when estimating an LBA model, each participant will have several parameters, such as a start point (<code>A</code>), threshold (<code>b</code>), drift rate (<code>v</code>), and non-decision time (<code>t0</code>). The PMwG package assumes that the vector of each subject’s parameter value follows a group-level distribution which is multivariate normal. The algorithm will estimate the group-level mean for each parameter, as well as its variance, and also the correlations between parameters in the sample.</p>
-<p>One consequence of the multivariate normal assumption is that all parameters are assumed to be unbounded (i.e. able to take values anywhere on the real line). Cognitive models often have bounded parameters (e.g. in the LBA model, the non-decision time parameter cannot be negative, as it represents a length of time). The user should deal with bounded parameters by transforming them to be unbounded. We give examples of that, in the likelihood functions.</p>
-</div>
-<div id="what-particle-metropolis-within-gibbs-sampling-provides" class="section level2">
-<h2><span class="header-section-number">1.4</span> What Particle Metropolis within Gibbs sampling provides</h2>
-<p>The sampler will provide samples from the posterior distribution of the model in three categories:</p>
-<ul>
-<li><p>The means for the group level parameters (<code>theta</code>).</p></li>
-<li><p>The vectors of random effects for each subject (individual level parameter values, <code>alpha</code>)</p></li>
-<li><p>The group-level variance covariance matrix (<code>sigma</code>).</p></li>
-</ul>
-</div>
-<div id="what-is-particle-metropolis-within-gibbs-sampling" class="section level2">
-<h2><span class="header-section-number">1.5</span> What is Particle Metropolis within Gibbs sampling?</h2>
-<p>There are two sampling approaches incorporated into PMwG. One is the well-established and easy to apply Gibbs sampling on the group-level parameters. Gibbs sampling is very powerful and efficient, and it can work for the group-level parameters because the package assumes a multivariate normal distribution, which is easy to work with.</p>
-<p>However, for the subject-level parameters (random effects), Gibbs sampling is not possible; at least not for most cognitive models. For this reason, the PMwG package uses particle methods to sample random effects. Particle sampling works like other Markov chain samplers, such as Metropolis-Hastings. At each step, the sample (the vector of random effects) from the previous step is compared to a large number of proposals (“particles”). The new sample is chosen from amongst the particles (including the previous sample), according to how well they match the data and the prior.</p>
-<p>The key to making the algorithm efficient is to propose particles carefully. Our algorithm uses adaptive proposal distributions, individually tuned for each participant, to make sure that good proposal particles are generated without requiring a prohibitively large number of particles in total. How often the sampler accepts a new particle (compared to the previous sample) is referred to as the acceptance rate. Acceptance rate can be adjusted for maximum efficiency (somewhere around 30-50% acceptance is great) by changing the total number of particles and by changing the variance of the proposal distribution (parameter “epsilon”). The particles are evaluated in parallel, which increases computation speed.</p>
-</div>
-<div id="generating-proposals-in-pmwg-sampling-using-particle-metropolis" class="section level2">
-<h2><span class="header-section-number">1.6</span> Generating proposals in PMwG sampling using Particle Metropolis</h2>
-<p>PMwG has three sampling stages (demarcated by the black, vertical lines in the plot below). The first stage is called <code>burn-in</code>, the second is <code>adaptation</code>, and the third is the <code>sampled</code> stage. The stages employ different numbers of particles, and different proposal distributions. This makes the algorithm most efficient.</p>
-<div class="figure"><span style="display:block;" id="fig:tracePlteg"></span>
-<img src="pngs/Traceplotintro.png" alt="Trace plot with vertical lines demarcating the PMwG sampler's three sampling stages" width="100%" />
-<p class="caption">
-Figure 1.1: Trace plot with vertical lines demarcating the PMwG sampler’s three sampling stages
-</p>
-</div>
-<p>In the <code>burn-in</code> and <code>adaptation stages</code>, the proposals (or random effects vectors) for each subject are sampled from a mixture of two sources. One source is the group-level distribution and the second source is a multivariate normal distribution centred on the current best guess for the subject’s random effects vector (alpha), with a variance that is smaller than the group level distribution. We generate proposals from both sources, because proposals generated from the group level distribution act as a safety net in situations where proposals generated from the subject’s current alpha are unusual or unlikely. If this occurs instead of the sampler taking a long way to return a sensible vector of random effects, a group level proposal will instead be chosen, leading to a faster sampling time.</p>
-<p>One thing we want to know is the posterior distribution for each subject’s random effects (<code>alpha</code>). For this reason, we throw away samples from the <code>burn-in</code> stage, because this is a period in which the sampler is trying to move away from an initial guess, and stabilise on samples which are from the true posterior distribution for each subject’s random effects.</p>
-<p>In the <code>adaptation</code> stage, we continue the algorithm used in the <code>burn-in</code> stage until we collect a minimum of 20 unique samples from each subject’s posterior distribution. These samples are used to give a good idea of what the posterior distribution looks like for each subject’s random effects vector. That allows us to build an adaptive proposal distribution that makes very efficient proposals, in the next stage.</p>
-<p>In the final sampling stage (<code>sample</code>), we generate a multivariate normal distribution (referred to as the adaptive proposal distribution), that summarises the unique samples in the adaptation stage, and use this to generate future proposals. An important feature of this distribution is that, for each subject, it summarises not only the posterior distribution of their random effects but also the way these random effects relate to the group-level parameter. This allows us to draw conditional proposals; proposals which are both consistent with that subject’s random effects and with the current proposal for the group-level distribution. Because of this, the proposals generated are frequently accepted, so we can lower the number of particles needed in this stage (for example, 20 instead of 200), and still maintain an adequate acceptance rate. Further, we continue to update this proposal distribution throughout the <code>sample</code> stage so we have a more accurate proposal distribution.</p>
-<p>As a safety precaution during the <code>sample</code> stage, we also include a few proposal particles from the same algorithm as used in the burn-in stage. This protects against very poor conditional proposal distributions.</p>
+<div id="notice" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">Chapter 1</span> NOTICE<a href="#notice" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>This version is currently <strong>archived</strong>. Details on the current up to date location can be found below.</p>
+<div id="particle-metropolis-within-gibbs-book" class="section level2 hasAnchor" number="1.1">
+<h2><span class="header-section-number">1.1</span> Particle Metropolis within Gibbs Book<a href="#particle-metropolis-within-gibbs-book" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The book is located at <a href="https://university-of-newcastle-research.github.io/samplerDoc/" class="uri">https://university-of-newcastle-research.github.io/samplerDoc/</a></p>
+<p>The PMwG package can be found at <a href="https://github.com/university-of-newcastle-research/pmwg" class="uri">https://github.com/university-of-newcastle-research/pmwg</a></p>
+<p>The PMwG book is built on the bookdown platform.
+<a href="https://bookdown.org/yihui/bookdown/" class="uri">https://bookdown.org/yihui/bookdown/</a> and hosted on github pages <a href="https://pages.github.com/" class="uri">https://pages.github.com/</a>.</p>
 
-</div>
-</div>
-<h3>References</h3>
-<div id="refs" class="references">
-<div id="ref-shiffrin2008survey">
-<p>Shiffrin, Richard M, Michael D Lee, Woojae Kim, and Eric-Jan Wagenmakers. 2008. “A Survey of Model Evaluation Approaches with a Tutorial on Hierarchical Bayesian Methods.” <em>Cognitive Science</em> 32 (8): 1248–84.</p>
-</div>
-<div id="ref-van2018simple">
-<p>Van Ravenzwaaij, Don, Pete Cassey, and Scott D Brown. 2018. “A Simple Introduction to Markov Chain Monte–Carlo Sampling.” <em>Psychonomic Bulletin &amp; Review</em> 25 (1): 143–54.</p>
 </div>
 </div>
             </section>
@@ -310,11 +119,10 @@ Figure 1.1: Trace plot with vertical lines demarcating the PMwG sampler’s thre
         </div>
       </div>
 
-<a href="pmwg-sampler-and-signal-detection-theory.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
 <script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
@@ -325,60 +133,46 @@ Figure 1.1: Trace plot with vertical lines demarcating the PMwG sampler’s thre
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["PMwG-Sampler-Tutorial.pdf", "PMwG-Sampler-Tutorial.epub"],
-"search": {
-"engine": "lunr",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/rstudio/bookdown-demo/edit/master/index.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": ["PMwG-Sampler-Tutorial.pdf", "PMwG-Sampler-Tutorial.epub"],
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>
